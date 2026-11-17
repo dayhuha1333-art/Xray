@@ -33,11 +33,26 @@ repositories {
     mavenCentral()
 }
 
+configurations.all {
+    resolutionStrategy {
+        force 'org.ow2.asm:asm:5.2'
+        force 'org.ow2.asm:asm-debug-all:5.2'
+    }
+}
+
 dependencies {
     minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2860'
     
-    compileOnly 'zone.rong:mixinbooter:10.7'
-    annotationProcessor 'zone.rong:mixinbooter:10.7'
+    implementation ('zone.rong:mixinbooter:10.7') {
+        transitive = false
+    }
+    annotationProcessor ('zone.rong:mixinbooter:10.7') {
+        transitive = false
+    }
+    
+    annotationProcessor 'org.ow2.asm:asm-debug-all:5.2'
+    annotationProcessor 'com.google.guava:guava:32.1.2-jre'
+    annotationProcessor 'com.google.code.gson:gson:2.8.9'
 }
 
 jar.finalizedBy('reobfJar')
