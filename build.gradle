@@ -29,7 +29,6 @@ minecraft {
 
 repositories {
     maven { url = 'https://maven.minecraftforge.net/' }
-    maven { url = 'https://maven.cleanroommc.com' }
     mavenCentral()
 }
 
