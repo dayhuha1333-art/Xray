@@ -30,8 +30,9 @@ minecraft {
 repositories {
     maven { url = 'https://maven.minecraftforge.net/' }
     maven { url = 'https://libraries.minecraft.net/' }
-    maven { url = 'https://maven.cleanroommc.com' }
     mavenCentral()
+    // Modrinth Maven для MixinBooter, чтобы избежать таймаутов CleanroomMC
+    maven { url = 'https://api.modrinth.com/maven' }
 }
 
 configurations.all {
@@ -44,10 +45,11 @@ configurations.all {
 dependencies {
     minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2860'
     
-    implementation ('zone.rong:mixinbooter:10.7') {
+    // MixinBooter 10.7 через Modrinth Maven
+    implementation ('maven.modrinth:mixinbooter:PZYBy1vc') {
         transitive = false
     }
-    annotationProcessor ('zone.rong:mixinbooter:10.7') {
+    annotationProcessor ('maven.modrinth:mixinbooter:PZYBy1vc') {
         transitive = false
     }
     
