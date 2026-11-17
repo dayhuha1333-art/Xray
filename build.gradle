@@ -30,6 +30,13 @@ minecraft {
 repositories {
     maven { url = 'https://maven.minecraftforge.net/' }
     mavenCentral()
+    // CleanroomMC ТОЛЬКО для MixinBooter, чтобы authlib шёл с forge/mavenCentral
+    maven {
+        url = 'https://maven.cleanroommc.com'
+        content {
+            includeGroup 'zone.rong'
+        }
+    }
 }
 
 configurations.all {
