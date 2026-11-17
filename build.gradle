@@ -31,7 +31,6 @@ repositories {
     maven { url = 'https://maven.minecraftforge.net/' }
     maven { url = 'https://libraries.minecraft.net/' }
     mavenCentral()
-    // Modrinth Maven для MixinBooter, чтобы избежать таймаутов CleanroomMC
     maven { url = 'https://api.modrinth.com/maven' }
 }
 
@@ -45,7 +44,6 @@ configurations.all {
 dependencies {
     minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2860'
     
-    // MixinBooter 10.7 через Modrinth Maven
     implementation ('maven.modrinth:mixinbooter:PZYBy1vc') {
         transitive = false
     }
@@ -59,11 +57,3 @@ dependencies {
 }
 
 jar.finalizedBy('reobfJar')
-
-jar {
-    manifest {
-        attributes(
-            "MixinConfigs": "mixins.xraymod.json"
-        )
-    }
-}
