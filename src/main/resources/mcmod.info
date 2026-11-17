@@ -1,7 +1,7 @@
 [{
   "modid": "xraymod",
   "name": "XRay Mod",
-  "description": "X-Ray mod via Mixin.",
+  "description": "X-Ray mod via MixinBooter.",
   "version": "1.0.0",
   "mcversion": "1.12.2",
   "authorList": ["YourName"],
