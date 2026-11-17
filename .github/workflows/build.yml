@@ -1,6 +1,9 @@
 name: Build XRay Mod
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -14,15 +17,19 @@ jobs:
           distribution: 'temurin'
           java-version: '8'
 
-      - name: Set up Gradle 4.9
-        uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: 4.9
+      - name: Download Gradle 4.10.2
+        run: |
+          wget -q https://services.gradle.org/distributions/gradle-4.10.2-bin.zip
+          unzip -q gradle-4.10.2-bin.zip
+          echo "$PWD/gradle-4.10.2/bin" >> $GITHUB_PATH
 
-      - name: Build with Gradle
-        run: gradle build --no-daemon
+      - name: Generate wrapper
+        run: gradle wrapper --gradle-version 4.10.2
 
-      - name: Upload Artifact
+      - name: Build
+        run: ./gradlew build --no-daemon
+
+      - name: Upload JAR
         uses: actions/upload-artifact@v4
         with:
           name: xraymod-jar
