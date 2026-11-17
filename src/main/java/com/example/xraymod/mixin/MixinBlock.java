@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(Block.class)
 public class MixinBlock {
 
-    @Inject(method = "isOpaqueCube", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "func_149686_d", at = @At("HEAD"), cancellable = true)
     private void onIsOpaqueCube(IBlockState state, CallbackInfoReturnable<Boolean> cir) {
         if (!XRayMod.enabled) return;
 
